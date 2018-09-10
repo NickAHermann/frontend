@@ -7,4 +7,13 @@ before_install:
 
 script:
   - docker run nickahermann/frontend npm run test -- --coverage
-  
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-401424348116"
+  bucket_path: "docker-react"
+  on:
+      branch: master
